@@ -1,0 +1,93 @@
+﻿@page
+@model Brimborium.OAuthDiagnostics.Pages.UI.IndexModel
+@{
+    ViewData["Title"] = "Configure";
+}
+
+<div class="refreshbutton"><a href="/UI">Refresh</a></div>
+<div class="container-space-between">
+    <span style="font-size:larger">
+        Current Requests
+    </span>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="LoggingState.Duration" style="display:inline"></label>
+            <input asp-for="LoggingState.Duration" style="display:inline; width:100px" />
+            <span asp-validation-for="LoggingState.Duration" class="text-danger"></span>
+        </div>
+        <button value="enable" asp-page-handler="Enable">
+            @if (this.Model.LoggingState.IsEnabled)
+            {
+                <text>[x] Logging is enabled</text>
+            }
+            else
+            {
+                <text>[ ] Enable Logging</text>
+            }
+
+        </button>
+        <button value="disable" asp-page-handler="Disable">
+            @if (!this.Model.LoggingState.IsEnabled)
+            {
+                <text>[x] Logging is disabled</text>
+            }
+            else
+            {
+                <text>[ ] Disable Logging</text>
+            }
+        </button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data[0].At)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data[0].Method)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data[0].Path)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data[0].Headers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data[0].Content)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.At)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Method)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Path)
+                </td>
+                <td>
+                    <pre style="max-width:50vw; overflow-x:scroll">
+                        @item.Headers
+                                    </pre>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    <form method="post">
+                        <button asp-page="Details" asp-route-id="@item.LoggedRequestId">Details</button>
+                        <button asp-page-handler="Delete" asp-route-id="@item.LoggedRequestId">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

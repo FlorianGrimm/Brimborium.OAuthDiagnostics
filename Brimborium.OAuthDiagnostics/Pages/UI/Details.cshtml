@@ -1,0 +1,16 @@
+﻿@page
+@model Brimborium.OAuthDiagnostics.Pages.UI.DetailsModel
+<h1>Request - Details</h1>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Data.At)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Data.Method)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Data.Path)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Data.Path)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Data.Headers)</dt>
+        <dd class="col-sm-10"><pre>@this.Model.Data.Headers</pre></dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Data.Content)</dt>
+        <dd class="col-sm-10"><pre>@this.Model.Data.Content</pre></dd>
+
+    </dl>
+</div>

@@ -1,0 +1,54 @@
+﻿@page
+@model Brimborium.OAuthDiagnostics.Pages.UI.Response.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data[0].Path)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data[0].StatusCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data[0].ContentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data[0].ContentBody)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Data) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Path)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentBody)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ResponseId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ResponseId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ResponseId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,31 +1,117 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    font-family: Courier New, Courier, monospace;
+}
+/*
+     #FFB000 for dark amber, #FFCC00 for light amber, and variations around #33FF33 or #66FF66
+
+*/
+html,
+input[type=button],
+button {
+    background-color: white;
+    color: black;
+    padding: 4px 4px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color:gray;
+    text-decoration:none;
+}
+
+.container {
+    margin: 4px 0;
+    display: flex;
+}
+
+.container-space-between {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.navbar {
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.navbar-brand {
+    margin: 4px 8px;
+    padding: 4px 8px;
+    text-decoration: none;
+    font-size: larger;
+}
+
+
+.navbar-links {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+    .navbar-links a {
+        margin: 4px 8px;
+        padding: 4px 8px;
+        border: solid 1px #c0c0c0;
+        border-radius: 2px;
+        text-decoration: none;
+    }
+
+        .navbar-links a:hover {
+            color: white;
+        }
+
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+    color: var(--bs-secondary-color);
+    text-align: end;
 }
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    text-align: start;
+}
+
+div.refreshbutton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 20px;
+    background: blue;
+    border-radius: 10px;
+    border: solid 1px blue;
+}
+
+    div.refreshbutton a {
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        padding: 0 20px;
+        color: white;
+    }
+
+        div.refreshbutton a:hover {
+            color: gray;
+        }
+
+.footer {
+    border-top: 1px solid #c0c0c0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
 }
